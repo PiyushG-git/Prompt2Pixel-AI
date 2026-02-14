@@ -3,6 +3,7 @@ import cors from "cors";
 import "dotenv/config";
 
 import connectDB from "./config/mongodb.js";
+import userRouter from "./routes/userRoutes.js";
 
 console.log("Starting server file...");
 
@@ -14,6 +15,7 @@ app.use(cors());
 
 await connectDB();
 
+app.use('/api/user',userRouter)
 app.get("/", (req, res) => {
   res.send("API Working");
 });
